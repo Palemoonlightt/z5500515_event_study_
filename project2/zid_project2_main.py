@@ -21,7 +21,9 @@
 # Create import statements so that the module config.py and util.py (inside the project2 package)
 # are imported as "cfg", and "util"
 #
-# <COMPLETE THIS PART>
+import config as cfg
+import util
+
 
 
 # We've imported other needed scripts and defined aliases. Please keep using the same aliases for them in this project.
@@ -167,7 +169,16 @@ def get_avg(df: pd.DataFrame, year):
         dtype: float64
 
     """
-    # <COMPLETE THIS PART>
+    df.index=pd.to_datetime(df.index)
+    year_for_df=df[df.index.year==year]
+    res=year_for_df.mean()
+    return res
+    #df.iloc[:, 0] = df.iloc[:, 0]
+    #df.iloc[:,0]=pd.to_datetime(df.iloc[:,0])
+    #df.set_index(df.columns[0],inplace=True)
+    #dfyear=df[df.index.year==year]
+    #avg=dfyear.mean()
+    #return avg
 
 
 def get_cumulative_ret(df):
@@ -195,7 +206,9 @@ def get_cumulative_ret(df):
         where r1, ..., rN represents monthly returns
 
     """
-    # <COMPLETE THIS PART>
+    monthlyvalue=df+1
+    monthly_return=(monthlyvalue.prod())-1
+    return monthly_return
 
 
 # ----------------------------------------------------------------------------
@@ -445,8 +458,8 @@ def _test_get_cumulative_ret():
 
 if __name__ == "__main__":
     pass
-
-
+    _test_get_avg()
+    _test_get_cumulative_ret()
 
 
 
