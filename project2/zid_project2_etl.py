@@ -98,7 +98,25 @@ def read_prc_csv(tic, start, end, prc_col='Adj Close'):
 
     """
 
-    # <COMPLETE THIS PART>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    df=pd.read_csv(f"{tic.lower()}_prc.csv",index_col="Date")
+    df["Date"]=pd.to_datetime(df["Date"])
+    df.set_index("Date",inplace=True)
+    ser=df.loc[start:(end+1),[prc_col]]
+    ser=ser.dropna()
+    return ser
 
 
 # ----------------------------------------------------------------------------

@@ -22,13 +22,13 @@ CSVLOC = os.path.join(cfg.DATADIR, 'tsla_prc.csv')
 # returns an instance of `dt.datetime` representing the current date/time.
 
 # Instance of `dt.datetime` with the current date/time
-dt_now  = '?'
+dt_now  = dt.datetime.now()
 
 # This will produce a string representing the date/time in `dt_now`
-#print(dt_now) 
+print(dt_now)
 
 # This will confirm that `dt_now` is an instance of the `datetime` class
-#print(type(dt_now)) 
+print(type(dt_now))
 
 
 # From the `print` statement above, we can see that instances of `datetime` 
@@ -239,3 +239,13 @@ another_df  = '?'
 #print(rets)  
 
 
+
+
+
+current_datetime = dt.datetime.now()
+birth = dt.datetime(2000, 10, 31)
+ageinsecond = (current_datetime - birth).total_seconds()
+print("For how many seconds have you been alive:", ageinsecond)
+future = current_datetime + dt.timedelta(days=1340)
+future = future.year - birth.year - ((future.month, future.day) < (birth.month, birth.day))
+print("How old will you be in 1340 days:", future)
